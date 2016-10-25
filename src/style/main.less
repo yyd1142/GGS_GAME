@@ -1,0 +1,120 @@
+@boxShadow: 4px 4px 3px #ebebeb;
+body {
+  font-family: 'Microsoft YaHei';
+  margin: 0;
+  padding: 0;
+  background-color: #E8EAEB;
+  font-size: 16px;
+}
+
+input, select, option, textarea {
+  font-family: 'Microsoft YaHei';
+}
+
+div, ul, li, span, input, form, table {
+  box-sizing: border-box;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-content {
+  background: url(../../assets/images/background@2x.png) 0 0 no-repeat;
+  background-size: cover;
+  background-position: center center;
+  min-height: 800px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.expand-transition {
+  transition: all .2s linear;
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  -o-transition: all .2s linear;
+  opacity: 1;
+}
+
+
+/* .expand-enter 定义进入的开始状态 */
+
+
+/* .expand-leave 定义离开的结束状态 */
+
+.expand-enter, .expand-leave {
+  height: 0;
+  opacity: 0;
+}
+
+.hint-warp {
+  width: 100%;
+  position: fixed;
+  height: 100%;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.54);
+}
+
+.hint-view {
+  width: 300px;
+  position: absolute;
+  margin: AUTO;
+  height: 154px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 11;
+  background-color: #40d8da;
+  border-radius: 6px;
+}
+
+.hint-content {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  color: #ffffff;
+  margin-top: 35px;
+}
+
+.hint-button {
+  height: 33px;
+  width: 129px;
+  background-color: #fff;
+  border-radius: 33px;
+  text-align: CENTER;
+  font-size: 18px;
+  color: #40d8da;
+  line-height: 33px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+}
+
+::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #40d8da;
+}
+
+:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #40d8da;
+}
+
+::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #40d8da;
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #40d8da;
+}
