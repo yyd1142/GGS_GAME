@@ -11,9 +11,6 @@ function validateProfit() {
     return validateRegex("profit", /^(-?\d+)(\.\d+)?$/);
 }
 
-
-
-
 function validate() {
     return validateRegister;
 }
@@ -129,6 +126,3 @@ function cal() {
     }
     sessionStorage.setItem('firstResult', firstResult);
 }
-
-
-

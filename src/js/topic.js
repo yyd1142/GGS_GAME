@@ -1,9 +1,9 @@
 "use strict"
-var A_URL = '../../assets/images/A_ic@3x.png';
-var B_URL = '../../assets/images/B_ic@3x.png';
-var C_URL = '../../assets/images/C_ic@3x.png';
-var D_URL = '../../assets/images/D_ic@3x.png';
-var okURL = '../../assets/images/ok_ic@3x.png';
+var A_URL = '/assets/images/A_ic@3x.png';
+var B_URL = '/assets/images/B_ic@3x.png';
+var C_URL = '/assets/images/C_ic@3x.png';
+var D_URL = '/assets/images/D_ic@3x.png';
+var okURL = '/assets/images/ok_ic@3x.png';
 
 var topics = [
     {
@@ -58,8 +58,8 @@ var topics = [
 module.exports = {
     data() {
         return {
-            yesURL: '../../assets/images/yes_ic@2x.png',
-            noURL: '../../assets/images/no_ic@2x.png',
+            yesURL: '/assets/images/yes_ic@2x.png',
+            noURL: '/assets/images/no_ic@2x.png',
             topics: topics,
             STEP1: true,
             messageView: false,
@@ -76,9 +76,9 @@ module.exports = {
         checkedYES(i) {
             if (i == 0) {
                 this.yesURL = okURL;
-                this.noURL = '../../assets/images/no_ic@2x.png';
+                this.noURL = '/assets/images/no_ic@2x.png';
             } else {
-                this.yesURL = '../../assets/images/yes_ic@2x.png';
+                this.yesURL = '/assets/images/yes_ic@2x.png';
                 this.noURL = okURL;
             }
             let self = this;
@@ -86,7 +86,7 @@ module.exports = {
                 setTimeout(function () {
                     self.STEP1 = false;
                     self.topics[0].STEP = true;
-                }, 800);
+                }, 300);
             })
         },
         radioChecked(index, i) {

@@ -1,6 +1,3 @@
-
-
-
 function validateRegex(eleName,regex) {
     var obj = document.getElementById(eleName);
     var msg = document.getElementById(eleName + "Msg");
