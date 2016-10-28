@@ -16,7 +16,7 @@
 	<div class="hint-warp" v-if="alert" transition="expand">
 		<div class="hint-view">
 			<div class="hint-content">快来测测您公司估值多少</div>
-			<div class="hint-button" v-link="{path: '/topic'}">GO</div>
+			<div class="hint-button" @click="startTest()">GO</div>
 		</div>
 	</div>
 </template>
