@@ -129,7 +129,7 @@ module.exports = {
             this.$nextTick(function () {
                 setTimeout(function () {
                     self.messageView = false;
-                    self.resultView = true;
+                    self.$router.go('/result');
                 }, 300);
             })
         }

@@ -12,9 +12,11 @@
     "file-loader": "^0.8.5",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
+    "sha1": "^1.1.1",
     "url-loader": "^0.5.7",
     "vue": "^1.0.0",
-    "vue-router": "^0.7.13"
+    "vue-router": "^0.7.13",
+    "weixin-js-sdk": "^1.0.7"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",

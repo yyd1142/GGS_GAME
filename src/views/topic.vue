@@ -46,17 +46,6 @@
 				</div>
 				<input class="messae-submit" type="button" @click="submit" value="提交" id="calBut" />
 			</div>
-			<div class="result-view" v-show="resultView">
-				<div class="biankuang-result">
-					<span class="your-price">您的企业估值：</span>
-					<span id="firstResult"></span>
-				</div>
-				<div>
-					分享给好友，召唤您身边的老板朋友<br>来测企业估值啦！<br>
-					<span>即可获取一次抽奖机会<br>奖品内容：企业估值诊断书一份<br>(价值2万元)</span>
-				</div>
-                <i class="down-page-icon" v-link="{path: '/wechat'}"></i>
-			</div>
 		</from>
 	</div>
 </template>

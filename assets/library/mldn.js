@@ -119,26 +119,15 @@ function cal() {
     var t_register = document.getElementById("register").value;
     var t_actual = document.getElementById("actual").value;
     var t_profit = document.getElementById("profit").value;
-
+    let firstResult = '';
     if (t_actual == 0 && t_profit < 0) {
-        document.getElementById("firstResult").innerHTML = t_register * 0.2 * 0.1 * t_score / 10 * [(t_score1 + t_score2 + t_score3 + t_score4 + t_score5 + t_score6 + t_score7) / 10] + '万元';
+        firstResult = t_register * 0.2 * 0.1 * t_score / 10 * [(t_score1 + t_score2 + t_score3 + t_score4 + t_score5 + t_score6 + t_score7) / 10] + '万元';
     } else if (t_profit < 0) {
-        document.getElementById("firstResult").innerHTML = t_actual * 0.1 * t_score / 10 * [(t_score1 + t_score2 + t_score3 + t_score4 + t_score5 + t_score6 + t_score7) / 10] + '万元';
+        firstResult = t_actual * 0.1 * t_score / 10 * [(t_score1 + t_score2 + t_score3 + t_score4 + t_score5 + t_score6 + t_score7) / 10] + '万元';
     } else {
-        document.getElementById("firstResult").innerHTML = t_profit * t_score / 10 * [(t_score1 + t_score2 + t_score3 + t_score4 + t_score5 + t_score6 + t_score7) / 10] + '万元';
+        firstResult = t_profit * t_score / 10 * [(t_score1 + t_score2 + t_score3 + t_score4 + t_score5 + t_score6 + t_score7) / 10] + '万元';
     }
-    // var t_fs = document.getElementById("firstResult").innerHTML;
-    // if (t_fs == 0) {
-    //     document.getElementById("secondResult").innerHTML = "我还不是大老板！";
-    // } else if (t_fs > 10 && t_fs < 100) {
-    //     document.getElementById("secondResult").innerHTML = "我是十万估值大老板！";
-    // } else if (t_fs >= 100 && t_fs < 1000) {
-    //     document.getElementById("secondResult").innerHTML = "我是百万估值大老板！";
-    // } else if (t_fs >= 1000 && t_fs < 10000) {
-    //     document.getElementById("secondResult").innerHTML = "我是千万估值大老板！";
-    // } else if (t_fs > 10000) {
-    //     document.getElementById("secondResult").innerHTML = "我是亿万估值大老板！";
-    // }
+    sessionStorage.setItem('firstResult', firstResult);
 }
 
 
