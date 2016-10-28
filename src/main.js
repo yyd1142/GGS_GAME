@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import wxService from './wxService'
+import Service from './service'
 import MKOUtils from './MKOUtils'
 import App from './App.vue'
 Vue.use(VueRouter)
+Vue.use(Service)
 Vue.use(wxService)
 Vue.use(MKOUtils)
 

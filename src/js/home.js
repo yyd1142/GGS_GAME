@@ -9,6 +9,7 @@ module.exports = {
         }
     },
     ready() {
+        console.log(this)
     },
     methods: {
       startTest(){
