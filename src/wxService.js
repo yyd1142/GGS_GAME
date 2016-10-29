@@ -45,15 +45,15 @@ var isWeChatBrowser = false;
             },
             //获取titcket
             getTitcket(opts, cb) {
-                var params = { m: 'ticket' };
+                var params = { m: 'accesstoken' };
                 var self = this;
                 this.$httpGet('wechat', params, function (errorCode, data) {
                     if (errorCode == 0) {
-                        var jsapi_ticket = data.response.ticket
+                        var jsapi_ticket = data.JSTicket;
                         // var path = sessionStorage.getItem('firsetRouterPath');
-                        var path = window.location.origin + '/';// + self.$route.path;
+                        // var path = window.location.origin + '/';// + self.$route.path;
+                        var path = window.location.href;
                         var string1 = 'jsapi_ticket=' + jsapi_ticket + '&noncestr=' + opts.nonceStr + '&timestamp=' + opts.timestamp + '&url=' + path + ''
-                        console.log(string1)
                         var sign = sha1(string1)
                         cb(null, sign)
                     } else {
@@ -73,7 +73,7 @@ var isWeChatBrowser = false;
                     if (!err) {
                         wx.config({
                             debug: false,
-                            appId: 'wx974637ea6eb2a33b', // 必填，公众号的唯一标识
+                            appId: 'wx509622015f1acca6', // 必填，公众号的唯一标识
                             timestamp: opts.timestamp, // 必填，生成签名的时间戳
                             nonceStr: opts.nonceStr, // 必填，生成签名的随机串
                             signature: data,// 必填，签名，见附录1
@@ -189,10 +189,10 @@ var isWeChatBrowser = false;
                             link: data.link, // 分享链接
                             imgUrl: data.images, // 分享图标
                             success: function () {
-                                callback(0)// 用户确认分享后执行的回调函数
+                                callback(null, 0)// 用户确认分享后执行的回调函数
                             },
                             cancel: function () {
-                                callback(1)// 用户取消分享后执行的回调函数
+                                callback(null, 1)// 用户取消分享后执行的回调函数
                             }
                         })
                         wx.onMenuShareAppMessage({
@@ -203,10 +203,10 @@ var isWeChatBrowser = false;
                             type: '', // 分享类型,music、video或link，不填默认为link
                             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                             success: function () {
-                                // 用户确认分享后执行的回调函数
+                              callback(null, 0)
                             },
                             cancel: function () {
-                                // 用户取消分享后执行的回调函数
+                              callback(null, 1)
                             }
                         })
                     }
@@ -230,4 +230,3 @@ var isWeChatBrowser = false;
         Vue.use(api)
     }
 })()
-

@@ -45,20 +45,38 @@ Vue.use(VueResource)
             $httpPost: function (service, params, cb){
                 // POST request
                 var queryURL = baseURL + service;
-                this.$http({
-                    url: queryURL,
-                    data: params,
-                    method: 'POST'
-                }).then(function (result) {
-                    var data = result.data;
-                    if(data.code == 0){
+
+                this.$http.post(queryURL, params).then((response) => {
+                    // success callback
+                    var data = response.data;
+                    if (data.code == 0) {
                         cb(0, data);
-                    }else{
-                        cb(1, data);
+                    } else {
+                        cb(data.code, {});
                     }
-                }, function (error) {
-                    cb(-1, {});// error callback
+                }, (error) => {
+                    cb(-1, error);// error callback
                 });
+
+                // this.$http.post(queryURL, params).then(function(response){
+                //     cb(0, response);
+                // }).error(err){
+                //     cb(1, err);
+                // };
+                // this.$http({
+                //     url: queryURL,
+                //     data: params,
+                //     method: 'POST'
+                // }).then(function (result) {
+                //     var data = result.data;
+                //     if(data.code == 0){
+                //         cb(0, data);
+                //     }else{
+                //         cb(1, data);
+                //     }
+                // }, function (error) {
+                //     cb(-1, {});// error callback
+                // });
             }
         }
     };
@@ -78,4 +96,3 @@ Vue.use(VueResource)
         Vue.use(api)
     }
 })()
-

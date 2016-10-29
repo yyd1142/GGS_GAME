@@ -19,7 +19,7 @@ module.exports = {
             if(queryCode.code === undefined){
                 var redirect_uri = encodeURIComponent(window.location.href);
                 var params = {
-                    appid: 'wx974637ea6eb2a33b',
+                    appid: 'wx509622015f1acca6',
                     redirect_uri: redirect_uri,
                     response_type: 'code',
                     scope: 'snsapi_userinfo',
@@ -44,13 +44,13 @@ module.exports = {
                 return;
             }
             var params = {
-                m: 'openID',
+                m: 'openid',
                 code: code
             };
             this.$httpGet('wechat', params, function (code, data) {
                 if (code == 0) {
-                    localStorage.setItem('openID', data.response.openID);
-                    self.$router.go('/getOpenID');
+                    localStorage.setItem('openID', data.response.openid);
+                    self.$router.go('topic');
                 }else {
                     alert('获取用户信息失败');
                 }
@@ -59,5 +59,3 @@ module.exports = {
     }
 };
 </script>
-
-<style lang="less" src="../style/main.less" scoped></style>

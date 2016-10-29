@@ -11,22 +11,59 @@ module.exports = {
     },
     ready() {
         let self = this;
-        this.$nextTick(function () {
-            self.firstResult = sessionStorage.getItem('firstResult');
-        });
-        // this.share();
+        let uidString = localStorage.getItem('uuid');
+        if (uidString != this.$route.query.uuid){
+          sessionStorage.setItem('firendUUID', this.$route.query.uuid);
+          this.$nextTick(function(){
+            self.$router.go('/');
+          });
+          return;
+        }
+
+        setTimeout(function(){
+          self.share();
+        }, 700);
+
+        let firendUUID = sessionStorage.getItem('firendUUID');
+        if (firendUUID && firendUUID.length > 0){
+          this.$httpPost('game', {action: 'query', data: {openid: firendUUID}}, function(err, result){
+            if (result && result.code == 0 && result.response.data && 'openid' in result.response.data){
+              self.friendResult = result.response.data.value;
+              self.friendResultShow = true;
+            }
+          });
+        }
+
+        let value = this.$route.query.value;
+        if (value && value.length > 0){
+          this.$nextTick(function(){
+            this.firstResult = value;
+          });
+        }else {
+          this.$httpPost('game', {action: 'query', data: {openid: uidString}}, function(err, result){
+            if (result && result.code == 0 && result.response.data && 'openid' in result.response.data){
+              self.firstResult = result.response.data.value;
+            }else {
+              this.$nextTick(function(){
+                self.$router.go('/');
+              });
+            }
+          });
+        }
     },
     methods: {
         share() {
             var shareParams = {
-                title: '你的企业估值是多少',
+                title: '测测你的企业估值多少？',
                 link: window.location.href,
-                images: '/assets/images/ewm_pic@3x.png',
-                desc: '“如果要投资一家公司的管理者能够做到聪明、勤奋、正直，只要企业估值合理，必定是一个很好的标的。”'
+                images: 'http://gugusuo.oss-cn-shenzhen.aliyuncs.com/res/gugusuo_icon512.jpg',
+                desc: '我的企业原来估值是这个数，你也来测测？'
             };
+            var self = this;
             this.shareTimeline(shareParams, ['onMenuShareTimeline', 'onMenuShareAppMessage'], function (err, data) {
-                if (err) {
-                    return;
+                if (!err && data == 0) {
+                  let url = `/contact?value=${self.firstResult}`;
+                  self.$router.go(url);
                 }
             });
         }

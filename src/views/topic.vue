@@ -3,9 +3,9 @@
 		<form id="form1" name="form1" method="post" action="">
 			<div name="time" id="score" class="init" v-show="STEP1">
 				<div class="biankuang">1.您的企业成立不到三年？</div>
-				<label><input type="radio" name="score"  value="10" 
+				<label><input type="radio" name="score"  value="10"
                     @click="checkedYES(0)"/><img :src="yesURL"></label>
-				<label><input type="radio" name="score"  value="15" 
+				<label><input type="radio" name="score"  value="15"
                     @click="checkedYES(1)"/><img :src="noURL"></label>
 			</div>
 			<div id="case" class="init-other" v-for="item in topics" v-show="item.STEP">
@@ -44,7 +44,7 @@
 					<input type="number" name="profit" id="profit" placeholder="上一年度利润" number>
 					<span>/万元</span>
 				</div>
-				<input class="messae-submit" type="button" @click="submit" value="提交" id="calBut" />
+				<input class="messae-submit" type="button" @click="submit()" value="提交" id="calBut" />
 			</div>
 		</from>
 	</div>

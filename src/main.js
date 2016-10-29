@@ -31,6 +31,7 @@ router.map({
     name: 'no'
   },
   '/topic': {
+    name: 'topic',
     component: require('./views/topic.vue'),
     name: 'topic'
   },
@@ -52,35 +53,35 @@ router.map({
   }
 });
 
-router.beforeEach(function (transition) {
-  if (!isWeChatBrowser) {
-    transition.next();
-    return;
-  }
-
-  if (firstTime) {
-    sessionStorage.setItem('firsetRouterPath', window.location.href);
-  }
-  firstTime = false;
-  if (!localStorage.getItem('openID')) {
-    if (!sessionStorage.getItem('path')) {
-      sessionStorage.setItem('path', transition.to.path);
-      transition.redirect('/getOpenID');   //重定向调整页面进行微信授权
-    } else {
-      transition.next();
-    }
-  } else {
-    if (transition.to.title === "授权页面") {
-      if (sessionStorage.getItem('path')) {
-        transition.redirect(sessionStorage.getItem('path'));
-      } else {
-        transition.redirect('/');
-      }
-    } else {
-      transition.next();
-      sessionStorage.removeItem('path');
-    }
-  }
-});
+// router.beforeEach(function (transition) {
+//   if (!isWeChatBrowser) {
+//     transition.next();
+//     return;
+//   }
+//
+//   if (firstTime) {
+//     sessionStorage.setItem('firsetRouterPath', window.location.href);
+//   }
+//   firstTime = false;
+//   if (!localStorage.getItem('openID')) {
+//     if (!sessionStorage.getItem('path')) {
+//       sessionStorage.setItem('path', transition.to.path);
+//       transition.redirect('/getOpenID');   //重定向调整页面进行微信授权
+//     } else {
+//       transition.next();
+//     }
+//   } else {
+//     if (transition.to.title === "授权页面") {
+//       if (sessionStorage.getItem('path')) {
+//         transition.redirect(sessionStorage.getItem('path'));
+//       } else {
+//         transition.redirect('/');
+//       }
+//     } else {
+//       transition.next();
+//       sessionStorage.removeItem('path');
+//     }
+//   }
+// });
 
 router.start(App, '#app');

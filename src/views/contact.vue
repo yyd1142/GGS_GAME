@@ -5,15 +5,15 @@
 		</div>
 		<div class="message-view">
 			<div class="message-input">
-				<input type="text" placeholder="姓名" number>
+				<input type="text" placeholder="姓名" v-model="username" number>
 			</div>
 			<div class="message-input">
-				<input type="number" placeholder="联系电话" number>
+				<input type="number" placeholder="联系电话" v-model="contact" number>
 			</div>
 			<div class="message-input">
-				<input type="text" placeholder="公司名称" number>
+				<input type="text" placeholder="公司名称"  v-model="company" number>
 			</div>
-			<input class="messae-submit" type="button"  value="提交" />
+			<input class="messae-submit" type="button" @click="submitInfo()"  value="提交" />
 		</div>
 	</div>
 </template>

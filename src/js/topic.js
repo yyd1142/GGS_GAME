@@ -5,56 +5,100 @@ var C_URL = '/assets/images/C_ic@3x.png';
 var D_URL = '/assets/images/D_ic@3x.png';
 var okURL = '/assets/images/ok_ic@3x.png';
 
-var topics = [
-    {
-        STEP: false,
-        title: '2.我们团队的组建情况？',
-        A_URL: A_URL, B_URL: B_URL, C_URL: C_URL,
-        A_VALUE: 10, B_VALUE: 15, C_VALUE: 20,
-        A_NAME: '刚刚成立，人数不到3人', B_NAME: '基本人员已经到位，公司已运营超过半年', C_NAME: '组织架构完整，团队进入扩张阶段,'
-    },
-    {
-        STEP: false,
-        title: '3.我们公司所处哪个行业？',
-        A_URL: A_URL, B_URL: B_URL, C_URL: C_URL, D_URL: D_URL,
-        A_VALUE: 20, B_VALUE: 15, C_VALUE: 15, D_VALUE: 10,
-        A_NAME: '新兴行业，如TMT、医疗健康、智能制造', B_NAME: '传统制造企业', C_NAME: '贸易类企业', D_NAME: '其他'
-    },
-    {
-        STEP: false,
-        title: '4.我们公司的财务制度是否稳定？',
-        A_URL: A_URL, B_URL: B_URL, C_URL: C_URL,
-        A_VALUE: 20, B_VALUE: 15, C_VALUE: 10,
-        A_NAME: '财务专人专岗，财务制度规范化', B_NAME: '财务制度正在完善中', C_NAME: '尚未建立规范的财务制度'
-    },
-    {
-        STEP: false,
-        title: '5.我们目前所处于的市场地位？',
-        A_URL: A_URL, B_URL: B_URL, C_URL: C_URL, D_URL: D_URL,
-        A_VALUE: 20, B_VALUE: 15, C_VALUE: 10, D_VALUE: 5,
-        A_NAME: '只有我们公司，处于垄断地位', B_NAME: '除了我们，有几家大型的同类公司', C_NAME: '多家竞争力差不多的公司，其中包括我们', D_NAME: '市场充分竞争，我们刚刚进入'
-    },
-    {
-        STEP: false,
-        title: '6.我们的盈利能力如何？',
-        A_URL: A_URL, B_URL: B_URL, C_URL: C_URL, D_URL: D_URL,
-        A_VALUE: 20, B_VALUE: 15, C_VALUE: 10, D_VALUE: 5,
-        A_NAME: '已经实现盈利，公司经营有盈余', B_NAME: '基本满足盈亏平衡', C_NAME: '目前处于亏损状态，预计半年内能产生利润', D_NAME: '目前处于亏损状态，预计超过半年才能产生利润'
-    },
-    {
-        STEP: false,
-        title: '7.我们公司发展速度如何？增长率如何？',
-        A_URL: A_URL, B_URL: B_URL, C_URL: C_URL,
-        A_VALUE: 20, B_VALUE: 15, C_VALUE: 10,
-        A_NAME: '快速发展阶段，净利润或数据量增速大于10%', B_NAME: '一般发展阶段，净利润或数据量增速小于10%', C_NAME: '处于停滞阶段，正在调整发展策略'
-    },
-    {
-        STEP: false,
-        title: '8.我们属于哪一类独特性企业？',
-        A_URL: A_URL, B_URL: B_URL, C_URL: C_URL,
-        A_VALUE: 20, B_VALUE: 15, C_VALUE: 10,
-        A_NAME: '我们的技术短期内无法复制', B_NAME: '我们具有一定资源垄断性质', C_NAME: '我们采用的商业模式创新'
-    }]
+var topics = [{
+    STEP: false,
+    title: '2.我们团队的组建情况？',
+    A_URL: A_URL,
+    B_URL: B_URL,
+    C_URL: C_URL,
+    A_VALUE: 10,
+    B_VALUE: 15,
+    C_VALUE: 20,
+    A_NAME: '刚刚成立，人数不到3人',
+    B_NAME: '基本人员已经到位，公司已运营超过半年',
+    C_NAME: '组织架构完整，团队进入扩张阶段,'
+}, {
+    STEP: false,
+    title: '3.我们公司所处哪个行业？',
+    A_URL: A_URL,
+    B_URL: B_URL,
+    C_URL: C_URL,
+    D_URL: D_URL,
+    A_VALUE: 20,
+    B_VALUE: 15,
+    C_VALUE: 15,
+    D_VALUE: 10,
+    A_NAME: '新兴行业，如TMT、医疗健康、智能制造',
+    B_NAME: '传统制造企业',
+    C_NAME: '贸易类企业',
+    D_NAME: '其他'
+}, {
+    STEP: false,
+    title: '4.我们公司的财务制度是否稳定？',
+    A_URL: A_URL,
+    B_URL: B_URL,
+    C_URL: C_URL,
+    A_VALUE: 20,
+    B_VALUE: 15,
+    C_VALUE: 10,
+    A_NAME: '财务专人专岗，财务制度规范化',
+    B_NAME: '财务制度正在完善中',
+    C_NAME: '尚未建立规范的财务制度'
+}, {
+    STEP: false,
+    title: '5.我们目前所处于的市场地位？',
+    A_URL: A_URL,
+    B_URL: B_URL,
+    C_URL: C_URL,
+    D_URL: D_URL,
+    A_VALUE: 20,
+    B_VALUE: 15,
+    C_VALUE: 10,
+    D_VALUE: 5,
+    A_NAME: '只有我们公司，处于垄断地位',
+    B_NAME: '除了我们，有几家大型的同类公司',
+    C_NAME: '多家竞争力差不多的公司，其中包括我们',
+    D_NAME: '市场充分竞争，我们刚刚进入'
+}, {
+    STEP: false,
+    title: '6.我们的盈利能力如何？',
+    A_URL: A_URL,
+    B_URL: B_URL,
+    C_URL: C_URL,
+    D_URL: D_URL,
+    A_VALUE: 20,
+    B_VALUE: 15,
+    C_VALUE: 10,
+    D_VALUE: 5,
+    A_NAME: '已经实现盈利，公司经营有盈余',
+    B_NAME: '基本满足盈亏平衡',
+    C_NAME: '目前处于亏损状态，预计半年内能产生利润',
+    D_NAME: '目前处于亏损状态，预计超过半年才能产生利润'
+}, {
+    STEP: false,
+    title: '7.我们公司发展速度如何？增长率如何？',
+    A_URL: A_URL,
+    B_URL: B_URL,
+    C_URL: C_URL,
+    A_VALUE: 20,
+    B_VALUE: 15,
+    C_VALUE: 10,
+    A_NAME: '快速发展阶段，净利润或数据量增速大于10%',
+    B_NAME: '一般发展阶段，净利润或数据量增速小于10%',
+    C_NAME: '处于停滞阶段，正在调整发展策略'
+}, {
+    STEP: false,
+    title: '8.我们属于哪一类独特性企业？',
+    A_URL: A_URL,
+    B_URL: B_URL,
+    C_URL: C_URL,
+    A_VALUE: 20,
+    B_VALUE: 15,
+    C_VALUE: 10,
+    A_NAME: '我们的技术短期内无法复制',
+    B_NAME: '我们具有一定资源垄断性质',
+    C_NAME: '我们采用的商业模式创新'
+}]
 module.exports = {
     data() {
         return {
@@ -67,10 +111,10 @@ module.exports = {
         }
     },
     ready() {
-        document.getElementById("register").addEventListener("blur", validateRegister, false);
-        document.getElementById("actual").addEventListener("blur", validateActual, false);
-        document.getElementById("profit").addEventListener("blur", validateProfit, false);
-        document.getElementById("calBut").addEventListener("click", cal, false);
+        // document.getElementById("register").addEventListener("blur", validateRegister, false);
+        // document.getElementById("actual").addEventListener("blur", validateActual, false);
+        // document.getElementById("profit").addEventListener("blur", validateProfit, false);
+        // document.getElementById("calBut").addEventListener("click", cal, false);
     },
     methods: {
         checkedYES(i) {
@@ -82,8 +126,8 @@ module.exports = {
                 this.noURL = okURL;
             }
             let self = this;
-            this.$nextTick(function () {
-                setTimeout(function () {
+            this.$nextTick(function() {
+                setTimeout(function() {
                     self.STEP1 = false;
                     self.topics[0].STEP = true;
                 }, 300);
@@ -112,8 +156,8 @@ module.exports = {
                 this.topics[index].C_URL = C_URL;
                 this.topics[index].D_URL = okURL;
             }
-            this.$nextTick(function () {
-                setTimeout(function () {
+            this.$nextTick(function() {
+                setTimeout(function() {
                     self.topics[index].STEP = false;
                     if (index == 6) {
                         self.messageView = true;
@@ -124,14 +168,53 @@ module.exports = {
             })
         },
         submit() {
-            yan();
+            var cal2 = function() {
+                var t_score = parseFloat(document.form1.score.value) / 10;
+                var t_score1 = parseFloat(document.form1.score1.value) / 10;
+
+                var tmpCount = t_score;
+                for (var i = 1; i <= 7; i++){
+                  var tmpName = 'score' + i
+                  tmpCount += parseFloat(document.form1[tmpName].value) / 10;
+                }
+                var firstResult = 0;
+
+                var t_register = parseFloat(document.getElementById("register").value);
+                if (Number.isNaN(t_register)){
+                    t_register = 0;
+                }
+                var t_actual = parseFloat(document.getElementById("actual").value);
+                if (Number.isNaN(t_actual)){
+                    t_actual = 0;
+                }
+                var t_profit = parseFloat(document.getElementById("profit").value);
+                if (Number.isNaN(t_profit)){
+                    t_profit = 0;
+                }
+                if (t_profit < 0 && t_actual == 0){
+                  firstResult = t_register * 0.2 * 0.1 * t_score1 * tmpCount;
+                }else if (t_profit < 0){
+                  firstResult = t_actual * 0.1 * t_score1 * tmpCount;
+                }else {
+                  firstResult = t_profit * t_score1 * tmpCount;
+                }
+                // let firstResult = 0;
+                // if (t_actual == 0 && t_profit < 0) {
+                //     firstResult = t_register * 0.2 * 0.1 * t_score / 10 * [(t_score1 + t_score2 + t_score3 + t_score4 + t_score5 + t_score6 + t_score7) / 10];
+                // } else if (t_profit < 0) {
+                //     firstResult = t_actual * 0.1 * t_score / 10 * [(t_score1 + t_score2 + t_score3 + t_score4 + t_score5 + t_score6 + t_score7) / 10];
+                // } else {
+                //     firstResult = t_profit * t_score / 10 * [(t_score1 + t_score2 + t_score3 + t_score4 + t_score5 + t_score6 + t_score7) / 10];
+                // }
+                firstResult = parseInt(firstResult);
+                return firstResult;
+            }
             let self = this;
-            this.$nextTick(function () {
-                setTimeout(function () {
-                    self.messageView = false;
-                    self.$router.go('/result');
-                }, 300);
-            })
+            setTimeout(function() {
+                self.messageView = false;
+                let url = `/result?uuid=${localStorage.getItem('uuid')}&value=${cal2()}`
+                window.location.href = url;
+            }, 300);
         }
     }
 };

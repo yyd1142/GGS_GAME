@@ -2,12 +2,12 @@
 	<div class="page-content" style="padding-top: 50px;">
 		<div class="result-view">
             <div class="biankuang-result" v-if="friendResultShow">
-				<span class="your-price">您的好友A的企业估值：</span>
-				<span id="firstResult">{{friendResult}}</span>
+				<span class="your-price">您好友的企业估值：</span>
+				<span id="firstResult">{{friendResult}}万元</span>
 			</div>
 			<div class="biankuang-result">
 				<span class="your-price">您的企业估值：</span>
-				<span id="firstResult">{{firstResult}}</span>
+				<span id="firstResult">{{firstResult}}万元</span>
 			</div>
 			<div class="fdfdfdf">
 				分享给好友，召唤您身边的老板朋友<br>来测企业估值啦！<br>
