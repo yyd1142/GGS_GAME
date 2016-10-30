@@ -56,16 +56,20 @@ module.exports = {
             var shareParams = {
                 title: '测测你的企业估值多少？',
                 link: window.location.href,
-                images: 'http://gugusuo.oss-cn-shenzhen.aliyuncs.com/res/gugusuo_icon512.jpg',
+                images: 'http://game.gugusuo.com/ggslogo.jpeg',
                 desc: '我的企业原来估值是这个数，你也来测测？'
             };
             var self = this;
             this.shareTimeline(shareParams, ['onMenuShareTimeline', 'onMenuShareAppMessage'], function (err, data) {
                 if (!err && data == 0) {
-                  let url = `/contact?value=${self.firstResult}`;
-                  self.$router.go(url);
+                  self.$router.go('/wechat');
+                  // let url = `/contact?value=${self.firstResult}`;
+                  // self.$router.go(url);
                 }
             });
+        },
+        goContact(){
+          this.$router.go('/wechat');
         }
     }
 };

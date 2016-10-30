@@ -105,6 +105,7 @@ module.exports = {
             yesURL: '/assets/images/yes_ic@2x.png',
             noURL: '/assets/images/no_ic@2x.png',
             topics: topics,
+            firstScore: 0,
             STEP1: true,
             messageView: false,
             resultView: false
@@ -117,7 +118,8 @@ module.exports = {
         // document.getElementById("calBut").addEventListener("click", cal, false);
     },
     methods: {
-        checkedYES(i) {
+        checkedYES(i, value) {
+          this.firstScore = value;
             if (i == 0) {
                 this.yesURL = okURL;
                 this.noURL = '/assets/images/no_ic@2x.png';
@@ -133,49 +135,45 @@ module.exports = {
                 }, 300);
             })
         },
-        radioChecked(index, i) {
+        radioChecked(index, selectIndex, value) {
             let self = this;
-            if (i == 0) {
+            if (selectIndex == 0) {
                 this.topics[index].A_URL = okURL;
                 this.topics[index].B_URL = B_URL;
                 this.topics[index].C_URL = C_URL;
                 this.topics[index].D_URL = D_URL;
-            } else if (i == 1) {
+            } else if (selectIndex == 1) {
                 this.topics[index].A_URL = A_URL;
                 this.topics[index].B_URL = okURL;
                 this.topics[index].C_URL = C_URL;
                 this.topics[index].D_URL = D_URL;
-            } else if (i == 2) {
+            } else if (selectIndex == 2) {
                 this.topics[index].A_URL = A_URL;
                 this.topics[index].B_URL = B_URL;
                 this.topics[index].C_URL = okURL;
                 this.topics[index].D_URL = D_URL;
-            } else if (i == 3) {
+            } else if (selectIndex == 3) {
                 this.topics[index].A_URL = A_URL;
                 this.topics[index].B_URL = B_URL;
                 this.topics[index].C_URL = C_URL;
                 this.topics[index].D_URL = okURL;
             }
-            this.$nextTick(function() {
-                setTimeout(function() {
-                    self.topics[index].STEP = false;
-                    if (index == 6) {
-                        self.messageView = true;
-                    } else {
-                        self.topics[index + 1].STEP = true;
-                    }
-                }, 300);
-            })
+            this.topics[index].value = value;
+            setTimeout(function() {
+                self.topics[index].STEP = false;
+                if (index == 6) {
+                    self.messageView = true;
+                } else {
+                    self.topics[index + 1].STEP = true;
+                }
+            }, 400);
         },
         submit() {
-            var cal2 = function() {
-                var t_score = parseFloat(document.form1.score.value) / 10;
-                var t_score1 = parseFloat(document.form1.score1.value) / 10;
-
-                var tmpCount = t_score;
-                for (var i = 1; i <= 7; i++){
-                  var tmpName = 'score' + i
-                  tmpCount += parseFloat(document.form1[tmpName].value) / 10;
+            let self = this;
+              var t_score = this.firstScore / 10;
+                var tmpCount = 0;
+                for (var i = 0; i < 7; i++){
+                  tmpCount += this.topics[i].value / 10;
                 }
                 var firstResult = 0;
 
@@ -192,28 +190,21 @@ module.exports = {
                     t_profit = 0;
                 }
                 if (t_profit < 0 && t_actual == 0){
-                  firstResult = t_register * 0.2 * 0.1 * t_score1 * tmpCount;
+                  firstResult = t_register * 0.2 * 0.1 * t_score * tmpCount;
                 }else if (t_profit < 0){
-                  firstResult = t_actual * 0.1 * t_score1 * tmpCount;
+                  firstResult = t_actual * 0.1 * t_score * tmpCount;
                 }else {
-                  firstResult = t_profit * t_score1 * tmpCount;
+                  firstResult = t_profit * t_score * tmpCount;
                 }
-                // let firstResult = 0;
-                // if (t_actual == 0 && t_profit < 0) {
-                //     firstResult = t_register * 0.2 * 0.1 * t_score / 10 * [(t_score1 + t_score2 + t_score3 + t_score4 + t_score5 + t_score6 + t_score7) / 10];
-                // } else if (t_profit < 0) {
-                //     firstResult = t_actual * 0.1 * t_score / 10 * [(t_score1 + t_score2 + t_score3 + t_score4 + t_score5 + t_score6 + t_score7) / 10];
-                // } else {
-                //     firstResult = t_profit * t_score / 10 * [(t_score1 + t_score2 + t_score3 + t_score4 + t_score5 + t_score6 + t_score7) / 10];
-                // }
                 firstResult = parseInt(firstResult);
-                return firstResult;
-            }
-            let self = this;
+
+                this.$httpPost('game', {action: 'tester', data: {openid: localStorage.getItem('uuid')}}, function(err, result){
+                });
+
             setTimeout(function() {
                 self.messageView = false;
-                let url = `/result?uuid=${localStorage.getItem('uuid')}&value=${cal2()}`
-                window.location.href = url;
+                let url = `/contact?value=${firstResult}`;
+                self.$router.go(url);
             }, 300);
         }
     }

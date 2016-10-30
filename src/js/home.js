@@ -35,6 +35,8 @@ module.exports = {
       if (!uidString || uidString.length != 32){
           uidString = uuid(32);
           localStorage.setItem('uuid', uidString);
+          this.$httpPost('game', {action: 'visit', data: {openid: uidString}}, function(err, result){
+          });
       }else {
         this.$httpPost('game', {action: 'query', data: {openid: uidString}}, function(err, result){
           if (result && result.code == 0 && result.response.data && 'openid' in result.response.data){

@@ -13,7 +13,7 @@
 				分享给好友，召唤您身边的老板朋友<br>来测企业估值啦！<br>
 				<span>即可获取一次抽奖机会<br>奖品内容：企业估值诊断书一份<br>(价值2万元)</span>
 			</div>
-			<i class="down-page-icon" v-link="{path: '/wechat'}"></i>
+			<i class="down-page-icon" @click="goContact()"></i>
 		</div>
 	</div>
 </template>

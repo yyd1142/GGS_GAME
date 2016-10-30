@@ -4,29 +4,29 @@
 			<div name="time" id="score" class="init" v-show="STEP1">
 				<div class="biankuang">1.您的企业成立不到三年？</div>
 				<label><input type="radio" name="score"  value="10"
-                    @click="checkedYES(0)"/><img :src="yesURL"></label>
+                    @click="checkedYES(0, 10)"/><img :src="yesURL"></label>
 				<label><input type="radio" name="score"  value="15"
-                    @click="checkedYES(1)"/><img :src="noURL"></label>
+                    @click="checkedYES(1, 15)"/><img :src="noURL"></label>
 			</div>
 			<div id="case" class="init-other" v-for="item in topics" v-show="item.STEP">
 				<div class="biankuang">{{item.title}}</div>
 				<label>
-                    <input type="radio" name="score{{$index + 1}}"  :value="item.A_VALUE" @click="radioChecked($index,0)"/>
+                    <input type="radio" name="score{{$index + 1}}"  :value="item.A_VALUE" @click="radioChecked($index, 0, item.A_VALUE)"/>
                     <img :src="item.A_URL" />
                     <span>{{item.A_NAME}}</span>
                 </label>
 				<label>
-                    <input type="radio" name="score{{$index + 1}}"  :value="item.B_VALUE" @click="radioChecked($index,1)"/>
+                    <input type="radio" name="score{{$index + 1}}"  :value="item.B_VALUE" @click="radioChecked($index, 1, item.B_VALUE)"/>
                     <img :src="item.B_URL">
                     <span>{{item.B_NAME}}</span>
                 </label>
 				<label>
-                    <input type="radio" name="score{{$index + 1}}"  :value="item.C_VALUE" @click="radioChecked($index,2)"/>
+                    <input type="radio" name="score{{$index + 1}}"  :value="item.C_VALUE" @click="radioChecked($index, 2, item.C_VALUE)"/>
                     <img :src="item.C_URL">
                     <span>{{item.C_NAME}}</span>
                 </label>
 				<label v-if="item.D_VALUE != null">
-                    <input type="radio" name="score{{$index + 1}}"  :value="item.D_VALUE" @click="radioChecked($index,3)"/>
+                    <input type="radio" name="score{{$index + 1}}"  :value="item.D_VALUE" @click="radioChecked($index, 3, item.D_VALUE)"/>
                     <img :src="item.D_URL">
                     <span>{{item.D_NAME}}</span>
                 </label>

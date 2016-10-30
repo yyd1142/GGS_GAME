@@ -24,7 +24,8 @@ module.exports = {
           value: this.$route.query.value
         }
         this.$httpPost('game', {action: 'new', data: data}, function(err, result){
-          self.$router.go('/wechat');
+          let url = `/result?uuid=${localStorage.getItem('uuid')}&value=${self.$route.query.value}`;
+          window.location.href = url;
         });
       }
     }
