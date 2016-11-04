@@ -189,13 +189,22 @@ module.exports = {
                 if (Number.isNaN(t_profit)){
                     t_profit = 0;
                 }
-                if (t_profit < 0 && t_actual == 0){
-                  firstResult = t_register * 0.2 * 0.1 * t_score * tmpCount;
-                }else if (t_profit < 0){
-                  firstResult = t_actual * 0.1 * t_score * tmpCount;
-                }else {
+
+                if (t_profit > 0){
                   firstResult = t_profit * t_score * tmpCount;
+                }else if (t_profit <= 0 && t_actual != 0){
+                  firstResult = t_actual * 0.1 * t_score * tmpCount;
+                }else if (t_profit <= 0 && t_actual == 0){
+                  firstResult = 0;
                 }
+
+                // if (t_profit < 0 && t_actual == 0){
+                //   firstResult = t_register * 0.2 * 0.1 * t_score * tmpCount;
+                // }else if (t_profit < 0){
+                //   firstResult = t_actual * 0.1 * t_score * tmpCount;
+                // }else {
+                //   firstResult = t_profit * t_score * tmpCount;
+                // }
                 firstResult = parseInt(firstResult);
 
                 this.$httpPost('game', {action: 'tester', data: {openid: localStorage.getItem('uuid')}}, function(err, result){
